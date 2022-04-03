@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import "@testing-library/jest-dom";
 
@@ -9,5 +9,13 @@ test("botton has correct initial color", () => {
 
   //expect the background color to be red
   expect(colorButton).toHaveStyle({ background: "red" });
+
+  //click button
+  fireEvent.click(colorButton);
+
+  //expect the background color to be blue
+  expect(colorButton).toHaveStyle({ background: "blue" });
+
+  //expext the button text to be 'Change to red'
+  expect(colorButton.textContent).toBe("Change to red");
 });
-test("button turn blue when clicked", () => {});
